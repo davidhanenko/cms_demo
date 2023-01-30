@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_meta_tags",
+  "info": {
+    "singularName": "main-meta-tag",
+    "pluralName": "main-meta-tags",
+    "displayName": "Main meta tags",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mainMetaTitle": {
+      "type": "string"
+    },
+    "mainMetaDescription": {
+      "type": "richtext"
+    },
+    "mainOgLink": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "single_items",
+  "info": {
+    "singularName": "single-item",
+    "pluralName": "single-items",
+    "displayName": "Single Items",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "itemTitle": {
+      "type": "string",
+      "maxLength": 30,
+      "unique": true
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "size": {
+      "type": "string"
+    },
+    "minPrice": {
+      "type": "decimal"
+    },
+    "available": {
+      "type": "boolean"
+    },
+    "sizePrice": {
+      "type": "dynamiczone",
+      "components": [
+        "item-details.item-details"
+      ]
+    },
+    "items_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::items-category.items-category",
+      "mappedBy": "single_items"
+    },
+    "metatags": {
+      "type": "dynamiczone",
+      "components": [
+        "metatags.metatags"
+      ]
+    },
+    "callForPrice": {
+      "type": "string"
+    },
+    "storeLink": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    }
+  }
+}

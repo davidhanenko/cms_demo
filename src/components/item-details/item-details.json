@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_size_price_item_details",
+  "info": {
+    "displayName": "Size-price",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "size": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "type",
+        "gauge",
+        "color"
+      ]
+    },
+    "type_value": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "items",
+  "info": {
+    "singularName": "item",
+    "pluralName": "items",
+    "displayName": "Items",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "items_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::items-category.items-category",
+      "inversedBy": "items"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "items"
+    },
+    "metatags": {
+      "type": "dynamiczone",
+      "components": [
+        "metatags.metatags"
+      ]
+    }
+  }
+}

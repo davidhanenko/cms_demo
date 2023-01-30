@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "main_page_slides",
+  "info": {
+    "singularName": "main-page-slide",
+    "pluralName": "main-page-slides",
+    "displayName": "Main page slides"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slogan": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "bgImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "image1": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "image2": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "service": {
+      "type": "string"
+    }
+  }
+}
