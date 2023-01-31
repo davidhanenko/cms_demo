@@ -17,18 +17,15 @@
       "relation": "oneToMany",
       "target": "api::single-item.single-item"
     },
-    "charge": {
-      "type": "decimal"
-    },
-    "totalItems": {
-      "type": "integer"
-    },
-    "item_details": {
+    "items_details": {
       "type": "json"
     },
     "status": {
       "type": "string",
       "default": "pending"
+    },
+    "order_details": {
+      "type": "json"
     }
   }
 }
