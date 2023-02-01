@@ -34,7 +34,7 @@ module.exports = [
       origin: [
         "http://localhost:7777",
         "http://localhost:1337",
-        "https://whale-app-o2p8m.ondigitalocean.app/",
+        "https://a2z-cms-zfhox.ondigitalocean.app/",
         "https://a2z-ui-demo.vercel.app/",
       ],
     },
