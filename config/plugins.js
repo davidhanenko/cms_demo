@@ -10,7 +10,7 @@ module.exports = ({ env }) => ({
       actionOptions: {
         uploadStream: {
           folder: "A2Z",
-          transformation: [{ width: 650, height: 650, crop: "fill" }],
+          // transformation: [{ width: 650, height: 650, crop: "fill" }],
         },
         delete: {},
       },

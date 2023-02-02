@@ -65,7 +65,7 @@
       "type": "string"
     },
     "storeLink": {
-      "type": "string"
+      "type": "text"
     },
     "quantity": {
       "type": "integer"
