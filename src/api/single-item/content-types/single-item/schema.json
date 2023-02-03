@@ -31,9 +31,6 @@
         "audios"
       ]
     },
-    "description": {
-      "type": "text"
-    },
     "size": {
       "type": "string"
     },
@@ -69,6 +66,9 @@
     },
     "quantity": {
       "type": "integer"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }
