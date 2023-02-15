@@ -1,4 +1,43 @@
+const { ApplicationError } = require("@strapi/utils").errors;
+
 module.exports = {
+  async beforeCreate(event) {
+    const { data } = event.params;
+    let priceArr = [];
+    const cartCharge = JSON.parse(data?.order_details).charge;
+    const itemsDetails = JSON.parse(data?.items_details);
+    let i = 0;
+
+    while (i < itemsDetails.length) {
+      const res = await strapi.query("api::single-item.single-item").findOne({
+        where: { id: itemsDetails[i]?.cartId?.split("-")[0] },
+        populate: { sizePrice: true },
+        select: ["size", "price", "id", "quantity"],
+      });
+
+      let item;
+      if (itemsDetails[i]?.itemDetailsId) {
+        item = res?.sizePrice?.filter(
+          (sp) => sp?.id == itemsDetails[i]?.itemDetailsId
+        );
+        priceArr.push(item[0]?.price * itemsDetails[i]?.quantity);
+      } else {
+        priceArr.push(itemsDetails[i]?.price * itemsDetails[i]?.quantity);
+      }
+      i++;
+    }
+
+    orderCost = priceArr.reduce((acc, el) => (acc += el), 0);
+
+    console.log(orderCost, cartCharge);
+
+    if (orderCost !== cartCharge) {
+      throw new ApplicationError(
+        "Looks like there are some changes related to items in your cart. Please, reload the page, review your order again, and confirm if it aligns with your needs."
+      );
+    }
+  },
+
   async afterCreate(event) {
     const { result } = event;
 
@@ -70,7 +109,9 @@ module.exports = {
           </div>`,
       });
     } catch (err) {
-      console.log(err);
+      throw new ApplicationError(
+        "An unexpected error occurred, please try again"
+      );
     }
   },
 };
