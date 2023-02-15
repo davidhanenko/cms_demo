@@ -4,8 +4,16 @@ module.exports = {
   beforeCreate(event) {
     const { data } = event.params;
     let priceArr = [];
-    const cartCharge = JSON.parse(data?.order_details).charge;
-    const itemsDetails = JSON.parse(data?.items_details);
+    const cartCharge =
+      typeof data?.order_details === "object"
+        ? data?.order_details?.charge
+        : JSON.parse(data?.order_details).charge;
+
+    const itemsDetails =
+      typeof data?.items_details === "object"
+        ? data?.items_details
+        : JSON.parse(data?.items_details);
+
     let i = 0;
 
     while (i < itemsDetails.length) {
@@ -29,7 +37,6 @@ module.exports = {
     }
 
     orderCost = priceArr.reduce((acc, el) => (acc += el), 0);
-
 
     if (orderCost !== cartCharge) {
       throw new ApplicationError(
