@@ -1,7 +1,7 @@
 const { ApplicationError } = require("@strapi/utils").errors;
 
 module.exports = {
-  async beforeCreate(event) {
+  beforeCreate(event) {
     const { data } = event.params;
     let priceArr = [];
     const cartCharge = JSON.parse(data?.order_details).charge;
@@ -9,7 +9,7 @@ module.exports = {
     let i = 0;
 
     while (i < itemsDetails.length) {
-      const res = await strapi.query("api::single-item.single-item").findOne({
+      const res = strapi.query("api::single-item.single-item").findOne({
         where: { id: itemsDetails[i]?.cartId?.split("-")[0] },
         populate: { sizePrice: true },
         select: ["size", "price", "id", "quantity"],
@@ -21,15 +21,15 @@ module.exports = {
           (sp) => sp?.id == itemsDetails[i]?.itemDetailsId
         );
         priceArr.push(item[0]?.price * itemsDetails[i]?.quantity);
+        i++;
       } else {
         priceArr.push(itemsDetails[i]?.price * itemsDetails[i]?.quantity);
+        i++;
       }
-      i++;
     }
 
     orderCost = priceArr.reduce((acc, el) => (acc += el), 0);
 
-    console.log(orderCost, cartCharge);
 
     if (orderCost !== cartCharge) {
       throw new ApplicationError(
