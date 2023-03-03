@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 module.exports = {
   /**
@@ -7,7 +7,15 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }) {
+    const extensionService = strapi.plugin("graphql").service("extension");
+
+    extensionService.use({
+      "Query.orders": {
+        middlewares: [{ name: "api::order.ratelimit" }],
+      },
+    });
+  },
 
   /**
    * An asynchronous bootstrap function that runs before

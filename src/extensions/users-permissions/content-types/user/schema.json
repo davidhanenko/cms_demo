@@ -65,6 +65,18 @@
     },
     "phone": {
       "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "delivery_address": {
+      "type": "text"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
     }
   }
 }

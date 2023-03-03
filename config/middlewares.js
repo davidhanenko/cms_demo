@@ -30,12 +30,12 @@ module.exports = [
     name: "strapi::cors",
     config: {
       enabled: true,
-      header: "*",
+      // header: "*",
       origin: [
         "http://localhost:7777",
         "http://localhost:1337",
         "https://a2z-cms-zfhox.ondigitalocean.app",
-        "https://a2z-ui-demo.vercel.app",
+        "https://ui-demo-liart.vercel.app",
       ],
     },
   },
